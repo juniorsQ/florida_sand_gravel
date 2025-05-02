@@ -1,6 +1,9 @@
 abstract class RegisterState {}
 
-class RegisterInitial extends RegisterState {}
+class RegisterInitial extends RegisterState {
+    @override
+  List<Object?> get props => [];
+}
 
 class RegisterLoading extends RegisterState {}
 

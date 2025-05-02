@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:florida_sand_gravel/features/auth/presentation/cubits/login/login_cubit.dart';
 import 'package:florida_sand_gravel/features/auth/presentation/cubits/register/register_cubit.dart';
 import 'package:florida_sand_gravel/features/auth/presentation/screens/login_screen.dart';
 import 'package:florida_sand_gravel/features/auth/presentation/screens/register_screen.dart';
+import 'package:florida_sand_gravel/features/auth/presentation/cubits/login/login_cubit.dart';
+import 'package:florida_sand_gravel/features/auth/presentation/cubits/login/login_state.dart';
+
+import 'features/auth/data/repositories/auth_repository.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -13,11 +16,11 @@ class MyApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider<LoginCubit>(
-          create: (context) => LoginCubit(), // Asegúrate de inyectar dependencias si las hay
+          create: (context) => LoginCubit(authRepository: AuthRepository()), // Asegúrate de inyectar dependencias si las hay
         ),
-        BlocProvider<RegisterCubit>(
-          create: (context) => RegisterCubit(), // Asegúrate de inyectar dependencias si las hay
-        ),
+        // BlocProvider<RegisterCubit>(
+        //   create: (context) => RegisterCubit(), // Asegúrate de inyectar dependencias si las hay
+        // ),
       ],
       child: MaterialApp(
         title: 'Mi App Registro Login',
