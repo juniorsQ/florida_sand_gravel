@@ -1,4 +1,5 @@
 import 'package:florida_sand_gravel/features/auth/data/repositories/register_repository.dart';
+import 'package:florida_sand_gravel/features/auth/presentation/screens/terms/terms_conditions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:florida_sand_gravel/features/auth/presentation/screens/login_screen.dart';
@@ -31,6 +32,7 @@ class MyApp extends StatelessWidget {
         routes: {
           '/login': (context) => const LoginScreen(),
           '/register': (context) => const RegisterScreen(),
+          '/terms': (context) => TermsConditionsScreen(), 
         },
       ),
     );

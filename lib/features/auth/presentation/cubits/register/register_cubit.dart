@@ -5,14 +5,32 @@ import 'package:florida_sand_gravel/features/auth/presentation/cubits/register/r
 
 
 class RegisterCubit extends Cubit<RegisterState> {
-  final RegisterRepository ? _registerUser; // Inyecta el caso de uso
+  final RegisterRepository? _registerUser; // Inyecta el repositorio
 
-  RegisterCubit({RegisterRepository? registerRepository}) : _registerUser = registerRepository, super(RegisterInitial());
+  RegisterCubit({RegisterRepository? registerRepository}) 
+      : _registerUser = registerRepository, 
+        super(RegisterInitial());
 
-  Future<void> register(String name, String email, String password) async {
+  Future<void> register({
+    required String name,
+    required String lastName,
+    required String email,
+    required String phoneNumber,
+    required String truckNumber,
+    required int transportDivisionId,
+    required String password,
+    required String repeatPassword,
+  }) async {
     emit(RegisterLoading());
+
     try {
-      await _registerUser!.registerUser(name, email, password);
+      if (password != repeatPassword) {
+        throw Exception("Las contraseñas no coinciden.");
+      }
+
+      await _registerUser?.registerUser(name, lastName, email, phoneNumber, truckNumber, transportDivisionId, password,repeatPassword
+      );
+
       emit(RegisterSuccess());
     } catch (e) {
       emit(RegisterFailure(error: e.toString()));
