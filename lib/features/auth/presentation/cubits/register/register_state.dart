@@ -7,7 +7,11 @@ class RegisterInitial extends RegisterState {
 
 class RegisterLoading extends RegisterState {}
 
-class RegisterSuccess extends RegisterState {}
+class RegisterSuccess extends RegisterState {
+  @override
+  List<Object?> get props => [];
+  // Puedes agregar propiedades si es necesario 
+}
 
 class RegisterFailure extends RegisterState {
   final String error;

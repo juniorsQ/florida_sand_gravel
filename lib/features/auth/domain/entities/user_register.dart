@@ -4,14 +4,14 @@ part 'user_register.g.dart';
 @JsonSerializable()
 class UserRegister {
   final int? id;
-  final String name;
-  final String lastName;
+  final String? name;
+  final String? lastName;
   final String email;
-  final String phoneNumber;
-  final String truckNumber;
-  final int transportDivisionId;
+  final String? phoneNumber;
+  final String? truckNumber;
+  final int? transportDivisionId;
   final String password;
-  final String repeatPassword;
+  final String? repeatPassword;
   final bool? valid;
   final String? createdAt;
   final String? updatedAt;
@@ -19,14 +19,14 @@ class UserRegister {
 
   UserRegister({
     this.id,
-    required this.name,
-    required this.lastName,
+    this.name,
+    this.lastName,
     required this.email,
-    required this.phoneNumber,
-    required this.truckNumber,
-    required this.transportDivisionId,
+    this.phoneNumber,
+    this.truckNumber,
+    this.transportDivisionId,
     required this.password,
-    required this.repeatPassword,
+    this.repeatPassword,
     this.valid,
     this.createdAt, 
     this.updatedAt,

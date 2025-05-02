@@ -18,40 +18,42 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Iniciar Sesión"), // 🔹 Título de la pantalla
+
+
+        title: const Text("Iniciar Sesión"), 
       ),
-      body: BlocConsumer<LoginCubit, LoginState>( // 🔄 Usamos BlocConsumer para escuchar cambios de estado
+      body: BlocConsumer<LoginCubit, LoginState>( //  Usamos BlocConsumer para escuchar cambios de estado
         listener: (context, state) {
           if (state is LoginFailure) {
-            ScaffoldMessenger.of(context).showSnackBar( // 🔔 Mensaje de error
+            ScaffoldMessenger.of(context).showSnackBar( //  Mensaje  error
               SnackBar(content: Text(state.error)),
             );
           }
         },
 builder: (context, state) {
   if (state is LoginLoading) {
-    return const Center(child: CircularProgressIndicator()); // ⏳ Solo mientras el login está en proceso
+    return const Center(child: CircularProgressIndicator()); // login  en proceso
   } else if (state is LoginSuccess) {
     return Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          const Icon(Icons.check_circle, color: Colors.green, size: 80), // ✅ Ícono de éxito
+          const Icon(Icons.check_circle, color: Colors.green, size: 80), //
           const SizedBox(height: 16),
           Text(
-            "¡Bienvenido, ${state.authResponse.user.name}!", // ✅ Mostrar mensaje de éxito
+            "¡Bienvenido, ${state.authResponse.user.name}!", //logon exitoso
             style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
           ),
           const SizedBox(height: 16),
           ElevatedButton(
             onPressed: () {
-              Navigator.pushReplacementNamed(context, '/home'); // 🔹 Navegamos a la pantalla principal
+              Navigator.pushReplacementNamed(context, '/home'); // ir a la pantalla principal
             },
             child: const Text("Ir a la App"),
           ),
         ],
       ),
-    ); // ✅ Mostramos mensaje de éxito en lugar del loader
+    ); 
   }
 
   return Padding(

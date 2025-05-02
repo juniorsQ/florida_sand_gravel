@@ -1,3 +1,5 @@
+//import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:florida_sand_gravel/features/auth/presentation/cubits/register/register_cubit.dart';
@@ -18,7 +20,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Registro')),
+      appBar: AppBar(title: const Text('Solicitud de Aceeso')),
       body: BlocConsumer<RegisterCubit, RegisterState>(
         listener: (context, state) {
           if (state is RegisterSuccess) {
